@@ -23,7 +23,7 @@ export default function Navbar() {
                 <img 
                   src="/logo.png" 
                   alt="Malerato Butchery Logo"
-                  className="w-full h-full object-contain p-0.5"
+                  className="w-full h-full object-contain p-0"
                   onError={() => setLogoError(true)}
                 />
               )}
