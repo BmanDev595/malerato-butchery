@@ -16,14 +16,14 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo with Tagline - Shows on ALL devices */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-18 h-18 rounded-full overflow-hidden flex items-center justify-center bg-white-600">
+            <div className="w-9 h-9 rounded-full overflow-hidden flex items-center justify-center">
               {logoError ? (
                 <span className="text-white font-bold text-lg">M</span>
               ) : (
                 <img 
                   src="/logo.png" 
                   alt="Malerato Butchery Logo"
-                  className="w-full h-full object-contain p-0"
+                  className="w-20 h-20 object-contain p-0 m-0"
                   onError={() => setLogoError(true)}
                 />
               )}
