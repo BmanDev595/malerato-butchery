@@ -16,7 +16,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo with Tagline - Shows on ALL devices */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-18 h-18 rounded-full overflow-hidden flex items-center justify-center bg-white-400">
+            <div className="w-18 h-18 rounded-full overflow-hidden flex items-center justify-center bg-white-600">
               {logoError ? (
                 <span className="text-white font-bold text-lg">M</span>
               ) : (
