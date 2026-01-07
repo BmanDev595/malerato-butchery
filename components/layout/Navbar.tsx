@@ -38,7 +38,7 @@ export default function Navbar() {
               
               {/* Tagline - Shows on ALL devices */}
               <span className="text-[10px] sm:text-xs text-red-600 font-semibold tracking-wide uppercase">
-                Premium Quality Meats
+                Premium Meats
               </span>
             </div>
           </Link>
