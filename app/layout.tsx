@@ -5,6 +5,7 @@ import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import { CartProvider } from '../context/CartContext'
 import { CheckoutProvider } from '../context/CheckoutContext'
+import { AuthProvider } from '../context/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <AuthProvider>
         <CartProvider>
           <CheckoutProvider>
             <div className="min-h-screen flex flex-col">
@@ -30,6 +32,7 @@ export default function RootLayout({
             </div>
           </CheckoutProvider>
         </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   )
