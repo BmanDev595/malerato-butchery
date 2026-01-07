@@ -14,23 +14,33 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+          {/* Logo with Tagline - Shows on ALL devices */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-18 h-18 rounded-full overflow-hidden flex items-center justify-center bg-white-600">
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center bg-red-600">
               {logoError ? (
                 <span className="text-white font-bold text-lg">M</span>
               ) : (
                 <img 
                   src="/logo.png" 
                   alt="Malerato Butchery Logo"
-                  className="w-full h-full object-contain p-0"  // Less padding
+                  className="w-full h-full object-contain p-0.5"
+                  onError={() => setLogoError(true)}
                 />
               )}
             </div>
 
-            <span className="text-xl md:text-2xl font-bold text-gray-800">
-              Malerato<span className="hidden md:inline"> Butchery</span>
-            </span>
+            {/* Brand Name & Tagline Container */}
+            <div className="flex flex-col leading-tight">
+              {/* Main Brand Name */}
+              <span className="text-lg md:text-2xl font-bold text-gray-800">
+                Malerato<span className="hidden sm:inline"> Butchery</span>
+              </span>
+              
+              {/* Tagline - Shows on ALL devices */}
+              <span className="text-[10px] sm:text-xs text-red-600 font-semibold tracking-wide uppercase">
+                Premium Quality Meats
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
