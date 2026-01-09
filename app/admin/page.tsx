@@ -1,15 +1,54 @@
+// app/admin/page.tsx
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 export default function AdminPage() {
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const checkAuth = async () => {
+    try {
+      const response = await fetch('/api/auth/me', {
+        credentials: 'include'
+      });
+      
+      if (response.ok) {
+        const userData = await response.json();
+        if (userData.role !== 'admin') {
+          router.push('/'); // Redirect non-admins
+        } else {
+          setUser(userData);
+        }
+      } else {
+        router.push('/auth/login'); // Redirect unauthenticated users
+      }
+    } catch (error) {
+      router.push('/auth/login');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return null;
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="container mx-auto px-4">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Admin Dashboard</h1>
-          <p className="text-gray-600 mb-8">This page is under construction.</p>
-          <div className="bg-white rounded-lg shadow-sm p-8 max-w-md mx-auto">
-            <p className="text-gray-700">Admin features coming soon...</p>
-          </div>
-        </div>
-      </div>
+    <div>
+      <h1>Admin Dashboard</h1>
+      <p>Welcome, {user.name}!</p>
+      {/* Your admin content here */}
     </div>
-  )
+  );
 }
